@@ -34,6 +34,12 @@
 
 > 💡 **Mag je de rechthoek gebruiken voor bestanden?** De docent doet dat zelf (zijn "Maak een nieuwe results file" is een rechthoek). Het Document-symbool is **netter** en laat zien dat je de symbolen kent. Beide worden goedgekeurd. Kies één manier en houd die vol.
 
+> ⚠️ **Die grijze gegevensblokken: geen stap in de flow!**
+> Het grijze parallellogram naast `Definieer default variabelen` (en naast de 1/2/9-vraag) is **geen stap**. Er komt dus geen pijl in, en het "start" ook niets. Het is een **toelichting**: *"deze gegevens horen bij dit blok"*. De flow loopt alleen over de hoofdlijn: Start → Definieer default variabelen → …
+> Zo'n blok zonder ingaande pijl kan verwarrend zijn. Daarom zijn er twee manieren, en **allebei goed**:
+> 1. **Veiligst:** zet de gegevens **in** het blok zelf: `Definieer default variabelen: aantal seconden, naam tekstbestand, hostname`. Je hebt dan geen los blok en geen verwarring.
+> 2. **Zoals de docent:** een grijs parallellogram ernaast, met een **stippellijn** (of de Visio-vorm *Annotation*) naar het blok. Dan zie je dat het een toelichting is en geen stap.
+
 > 💡 **Kleuren** maken niet uit. De docent gebruikt blauw met rood, en grijs voor de invoergegevens. Zwart-wit is ook prima.
 
 ## Hoe schrijf je de tekst in de blokken? (de 7 regels)
@@ -82,7 +88,7 @@ Zo ziet de uitwerking van de docent eruit (GitHub tekent dit diagram automatisch
 ```mermaid
 flowchart TD
     S([Start]) --> P1[Definieer default variabelen]
-    D0[/Aantal seconden<br>Naam van de result file<br>Hostname/] --> P1
+    D0[/Aantal seconden<br>Naam van de result file<br>Hostname/] -.-> P1
     P1 --> Q1{"Aantal seconden als<br>argument opgegeven?"}
     Q1 -- Ja --> P2[Vervang default waarde voor seconden] --> Q2
     Q1 -- Nee --> Q2{"Naam van het bestand als<br>argument opgegeven?"}
@@ -90,7 +96,7 @@ flowchart TD
     Q2 -- Nee --> Q3{Bestaat de results file al?}
     Q3 -- Nee --> F1[Maak een nieuwe results file en schrijf de eerste regels weg]
     Q3 -- Ja --> V1[/Vraag gebruiker een optie te selecteren/]
-    D1[/1: File aanvullen<br>2: File overschrijven<br>9: Stoppen/] --> V1
+    D1[/1: File aanvullen<br>2: File overschrijven<br>9: Stoppen/] -.-> V1
     V1 --> Q4{1 van de opties ingevoerd?}
     Q4 -- Nee --> V1
     Q4 -- Ja --> Q5{Optie 2?}
@@ -114,6 +120,8 @@ flowchart TD
     O1 --> K1[/Meld de gebruiker dat het script klaar is, inclusief de tijd/]
     O2 --> K1
     K1 --> E2([Einde])
+    classDef info fill:#ddd,stroke:#999,color:#333
+    class D0,D1 info
 ```
 
 Het origineel van de docent:
@@ -158,6 +166,6 @@ Je [Visio-bestand](flowchart-kyan-oefentoets.vsdx) vergeleken met de docent:
 | 4 | Terugpijl van "Toont iets bewegends" en de pijl uit "Vervang…" zitten **niet vast** | Opnieuw vastlijmen |
 | 5 | Ruiten als opdracht: *"Controleer of tekstbestand al bestaat"* | Als vraag: `Bestaat de results file al?` |
 | 6 | Argumenten in één ruit | Splits in twee vragen zoals de beschrijving: `Aantal seconden als argument opgegeven?` en `Naam van het bestand als argument opgegeven?` |
-| 7 | Drie losse blokken met code (`$bestandsnaam = "MemoryUsage.txt"`) | Eén blok `Definieer default variabelen` + Data-blok met de drie gegevens |
+| 7 | Drie losse blokken met code (`$bestandsnaam = "MemoryUsage.txt"`) | Eén blok `Definieer default variabelen: aantal seconden, naam tekstbestand, hostname` (of grijs toelichtingsblok ernaast, zie de ⚠️ hierboven) |
 
 ✅ **Wat al goed was:** volgorde, stoptijd vóór de lus, beide invoerlussen met terugpijl naar de vraag, Ja/Nee-labels, twee Eindes, "bewegend" in de lus.
