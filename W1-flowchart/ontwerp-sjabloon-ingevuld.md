@@ -33,8 +33,8 @@ Het programma `MonitorFreeMemory.ps1` is een PowerShell-script dat gedurende een
 ## Toelichting bij stappen stroomdiagram
 1. **Start van het programma.**
 2. **Definieer default variabelen.** Het aantal seconden (5), de naam van het resultatenbestand (Results.txt) en de hostname van de machine worden in variabelen gezet.
-3. **$args[0] opgegeven?** Er wordt gecontroleerd of de gebruiker als eerste argument een aantal seconden heeft meegegeven. Zo ja, dan wordt de default waarde voor seconden vervangen.
-4. **$args[1] opgegeven?** Er wordt gecontroleerd of de gebruiker als tweede argument een bestandsnaam heeft meegegeven. Zo ja, dan wordt de default bestandsnaam vervangen.
+3. **Aantal seconden als argument opgegeven?** Er wordt gecontroleerd of de gebruiker bij het starten als eerste argument een aantal seconden heeft meegegeven (in het script: `$args[0]`). Zo ja, dan wordt de default waarde voor seconden vervangen.
+4. **Naam van het bestand als argument opgegeven?** Er wordt gecontroleerd of de gebruiker als tweede argument een bestandsnaam heeft meegegeven (in het script: `$args[1]`). Zo ja, dan wordt de default bestandsnaam vervangen.
 5. **Bestaat de results file al?** Zo nee: er wordt een nieuw bestand gemaakt en de eerste regels (`DELETE FROM MemoryUsage WHERE ID > 0;` en `INSERT INTO MemoryUsage (Hostname,FreeMemory,Date) VALUES`) worden weggeschreven. Daarna gaat het script naar stap 9.
 6. **Vraag gebruiker een optie te selecteren.** Het bestand bestaat al. De gebruiker kiest 1 (aanvullen), 2 (overschrijven) of 9 (stoppen).
 7. **1 van de opties ingevoerd?** Is het antwoord geen 1, 2 of 9? Dan wordt de vraag opnieuw gesteld (invoerlus).

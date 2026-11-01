@@ -25,7 +25,7 @@
 |---|---|---|---|---|---|---|
 | ⬭ **ovaal** (afgerond) | **Start/End** · *Begin/einde* | Begin en einde van het script. Precies **1× Start**, Einde mag vaker | start, stop het script, klaar | Eén woord | `Start` · `Einde` · `Stop script` | begin bestand · `Exit` |
 | ▭ **rechthoek** | **Process** · *Proces* | Het script **doet** iets: variabele vullen, berekenen, scherm leegmaken | vul, zet, bepaal, bereken, vervang, maak leeg | **Werkwoord + wat** (gebiedende wijs) | `Definieer default variabelen` · `Bepaal de stoptijd met behulp van de variabele seconden` · `Vervang default waarde voor seconden` | `$x = …` · `clear` |
-| ◇ **ruit** | **Decision** · *Beslissing* | Een **ja/nee-vraag**: een keuze of een lus | controleer of, als, zo ja / zo nee, zolang, net zolang tot | **Korte vraag met ?** | `$args[0] opgegeven?` · `Bestaat de results file al?` · `Stoptijd bereikt?` · `Is het antwoord 'y'?` | `if` · `while` |
+| ◇ **ruit** | **Decision** · *Beslissing* | Een **ja/nee-vraag**: een keuze of een lus | controleer of, als, zo ja / zo nee, zolang, net zolang tot | **Korte vraag met ?** | `Aantal seconden als argument opgegeven?` · `Bestaat de results file al?` · `Stoptijd bereikt?` · `Is het antwoord 'y'?` | `if` · `while` |
 | ▱ **parallellogram** | **Data** · *Gegevens* (invoer/uitvoer) | **Contact met de gebruiker**: iets vragen of tonen. Ook: welke gegevens er het script in gaan | vraag, toon, meld, geef een melding, voer in | `Vraag …` / `Toon …` / of een lijstje gegevens | `Vraag gebruiker een optie te selecteren` · grijs blok: `1: File aanvullen / 2: File overschrijven / 9: Stoppen` | `Read-Host` · `Write-Host` |
 | 🗎 **golvende onderkant** | **Document** · *Document* | Een **bestand** maken, lezen, schrijven of openen | bestand, schrijf weg, maak een bestand, open | `Maak …bestand` / `Schrijf … weg` | `Maak een nieuwe results file en schrijf de eerste regels weg` | `Set-Content` · `Add-Content` · `Invoke-Item` |
 | ▭‖ **rechthoek met dubbele zijkanten** | **Subprocess / Predefined process** · *Vooraf gedefinieerd proces* | Een **functie** die ergens anders is uitgewerkt | (functie, subroutine) | Naam van de functie | `Write-Log` | `function …` |
@@ -41,7 +41,7 @@
 2. **Rechthoek = opdracht** in gebiedende wijs: *Bepaal…*, *Maak…*, *Vervang…*, *Toon…*
 3. **Ruit = vraag** met een vraagteken: *Bestaat de results file al?*. **Niet** *Controleer of het bestand bestaat*.
 4. **Elke uitgang van een ruit krijgt een label**: Ja/Nee, of de waarde (1, 2, 9).
-5. **Gewone taal, geen code.** Variabelenamen mogen (`$args[0] opgegeven?`, `$seconds`), maar geen `if (Test-Path …)`.
+5. **Gewone taal, geen code.** Schrijf `Aantal seconden als argument opgegeven?` en niet `if ($args[0] -is [int])`. Een variabelenaam erbij mag (`… opgegeven? ($args[0])`), maar is niet nodig. De docent schrijft `$args[0] opgegeven?`, en dat wordt ook goedgekeurd. **Woorden zijn het veiligst:** ook iemand zonder PowerShell-kennis snapt het (criterium *communicatie*).
 6. **Volg de beschrijving letterlijk.** Teken wat er staat, niet meer en niet minder.
 7. **Lus = terugpijl** naar de plek waar opnieuw gevraagd of gecontroleerd wordt (**niet** naar het begin van het script).
 
@@ -49,7 +49,7 @@
 | Zin in de opdracht | Teken je als |
 |---|---|
 | "Vul drie variabelen met een default waarde: …" | **Proces** `Definieer default variabelen` + (optioneel) **Data** met de drie gegevens ernaast |
-| "Controleer of de gebruiker waarden als argument heeft opgegeven… Zo ja, vervang…" | **Ruit** `$args[0] opgegeven?` → Ja → **Proces** `Vervang default waarde voor seconden` → terug op de hoofdlijn. Nee → direct door. Daarna hetzelfde voor `$args[1]` |
+| "Controleer of de gebruiker waarden als argument heeft opgegeven… Zo ja, vervang…" | **Ruit** `Aantal seconden als argument opgegeven?` → Ja → **Proces** `Vervang default waarde voor seconden` → terug op de hoofdlijn. Nee → direct door. Daarna een **tweede ruit** `Naam van het bestand als argument opgegeven?` → Ja → `Vervang default waarde voor result file` |
 | "Controleer of het tekstbestand al bestaat" | **Ruit** `Bestaat de results file al?` |
 | "Zo nee, start een nieuw tekstbestand…" | Nee-tak → **Document** `Maak een nieuwe results file en schrijf de eerste regels weg` |
 | "Zo ja, geef de optie aanvullen / overschrijven / stoppen" | Ja-tak → **Data** `Vraag gebruiker een optie te selecteren` (+ grijs Data-blok `1/2/9`) |
@@ -77,15 +77,15 @@ De docent tekent de meetlus met de ruit **onder** de blokken (eerst meten, dan "
 ---
 
 ## De complete flowchart van de oefentoets
-Zo ziet de uitwerking van de docent eruit (GitHub tekent dit diagram automatisch):
+Zo ziet de uitwerking van de docent eruit (GitHub tekent dit diagram automatisch). De twee argument-ruiten staan hier in **gewone woorden**. De docent schrijft `$args[0] opgegeven?` en `$args[1] opgegeven?`. Allebei goed.
 
 ```mermaid
 flowchart TD
     S([Start]) --> P1[Definieer default variabelen]
     D0[/Aantal seconden<br>Naam van de result file<br>Hostname/] --> P1
-    P1 --> Q1{"$args[0] opgegeven?"}
+    P1 --> Q1{"Aantal seconden als<br>argument opgegeven?"}
     Q1 -- Ja --> P2[Vervang default waarde voor seconden] --> Q2
-    Q1 -- Nee --> Q2{"$args[1] opgegeven?"}
+    Q1 -- Nee --> Q2{"Naam van het bestand als<br>argument opgegeven?"}
     Q2 -- Ja --> P3[Vervang default waarde voor result file] --> Q3
     Q2 -- Nee --> Q3{Bestaat de results file al?}
     Q3 -- Nee --> F1[Maak een nieuwe results file en schrijf de eerste regels weg]
@@ -157,7 +157,7 @@ Je [Visio-bestand](flowchart-kyan-oefentoets.vsdx) vergeleken met de docent:
 | 3 | **"Open Bestand" heeft geen uitgaande pijl** (doodlopend pad) | Pijl naar `Meld … klaar + tijd` |
 | 4 | Terugpijl van "Toont iets bewegends" en de pijl uit "Vervang…" zitten **niet vast** | Opnieuw vastlijmen |
 | 5 | Ruiten als opdracht: *"Controleer of tekstbestand al bestaat"* | Als vraag: `Bestaat de results file al?` |
-| 6 | Argumenten in één ruit | Mag, maar de docent splitst `$args[0]` en `$args[1]` (twee aparte vragen = netter) |
+| 6 | Argumenten in één ruit | Splits in twee vragen zoals de beschrijving: `Aantal seconden als argument opgegeven?` en `Naam van het bestand als argument opgegeven?` |
 | 7 | Drie losse blokken met code (`$bestandsnaam = "MemoryUsage.txt"`) | Eén blok `Definieer default variabelen` + Data-blok met de drie gegevens |
 
 ✅ **Wat al goed was:** volgorde, stoptijd vóór de lus, beide invoerlussen met terugpijl naar de vraag, Ja/Nee-labels, twee Eindes, "bewegend" in de lus.
