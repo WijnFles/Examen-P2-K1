@@ -36,6 +36,7 @@ Elke **stap** in de flowchart (W1) is een **stukje code** in het script (W2). He
 - [PowerShell vanaf nul](W2-powershell/01-powershell-vanaf-nul.md)
 - [Oefenscripts met gaten](W2-powershell/scripts/oefeningen/) en [antwoorden](W2-powershell/scripts/antwoorden/)
 - [Testen en documenteren](W2-powershell/03-testen-en-documenteren.md)
+- [Lessen periode 9: param, try/catch, AD, DNS/DHCP, bulkgebruikers, REST API, de keten + verdediging](W2-powershell/lesstof/README.md)
 
 **W3**
 - [⭐ SQL-spiekbrief: alle queries](W3-sql/02-queries-spiekbrief.md)
@@ -58,6 +59,7 @@ Elke **stap** in de flowchart (W1) is een **stukje code** in het script (W2). He
 │   ├── 02-commentaar-naar-code.md        ⭐ opzoektabel
 │   ├── 03-testen-en-documenteren.md      testplan + documentatie
 │   ├── 04-varianten-andere-metingen.md   CPU, schijf, processen, ping…
+│   ├── lesstof/                          lessen periode 9: samenvatting, scripts, oefen-API's, verdediging
 │   └── scripts/
 │       ├── origineel/                    script docent (+ uitgelegd) en jouw versie
 │       ├── oefeningen/                   3 scripts met gaten

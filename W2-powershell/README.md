@@ -11,6 +11,7 @@
 | 4 | [scripts/oefeningen/](scripts/oefeningen/) | 3 oefenscripts met gaten. Antwoorden staan in [scripts/antwoorden/](scripts/antwoorden/) | 60 min |
 | 5 | [03-testen-en-documenteren.md](03-testen-en-documenteren.md) | Uitvoeren, testplan, documentatie (6 van de 15 punten!) | 15 min |
 | 6 | [04-varianten-andere-metingen.md](04-varianten-andere-metingen.md) | Als het examen CPU/schijf/… meet in plaats van geheugen | 10 min |
+| 7 | [lesstof/](lesstof/README.md) | **Lessen periode 9** (week 2-9): param/functies/try-catch/logging, AD, DNS/DHCP, bulkgebruikers, REST API's, de keten + verdedigingsvragen. Met geteste scripts | naslag |
 
 ## Hoe word je beoordeeld? (elk criterium 0-3 punten)
 | Criterium | Wat moet je laten zien | Hoe |

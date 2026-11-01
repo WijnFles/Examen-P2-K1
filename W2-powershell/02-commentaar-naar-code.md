@@ -209,3 +209,28 @@ Else {Write-Host "OK, the file will not be opened."}
 | Schrijf ook naar een logbestand via een functie | zie [01 § 19 Functies](01-powershell-vanaf-nul.md#19-functies) |
 | Vraag de gebruiker hoeveel seconden (in plaats van argument) | `$seconds = [int](Read-Host "How many seconds?")` |
 | Laat de gebruiker de hostname bevestigen | `$ok = Read-Host "Use $MachineName? (y/n)"` |
+
+---
+
+## Uit de lessen van periode 9: als het examenscript met param, logging, AD of een API werkt
+Volledige uitleg en geteste scripts: [lesstof/](lesstof/README.md).
+
+| Commentaar zegt | Code |
+|---|---|
+| Maak een param-blok met een verplichte servernaam | `param ( [Parameter(Mandatory=$true)] [string]$Servernaam )` |
+| … met een standaardwaarde en alleen 1 t/m 50 toegestaan | `[ValidateRange(1,50)] [int]$Aantal = 5` |
+| Maak een functie die een regel met tijdstempel naar het logboek schrijft | `function Schrijf-Log { param([string]$Tekst); Add-Content -Path $LogPad -Value "$(Get-Date -Format 'yyyy-MM-dd HH:mm:ss') - $Tekst" }` |
+| Schrijf naar het logboek dat het script start | `Schrijf-Log -Tekst "Script gestart"` |
+| Vang fouten af en toon een nette waarschuwing | `try { … -ErrorAction Stop } catch { Write-Warning "Fout: $($_.Exception.Message)" }` |
+| Code die altijd moet draaien, ook na een fout | `finally { Schrijf-Log -Tekst "Afgerond" }` |
+| Vraag het wachtwoord veilig op | `$ww = Read-Host -AsSecureString "Wachtwoord"` |
+| Lees het CSV-bestand in | `$personeel = Import-Csv -Path $CsvPad -Delimiter ';'` |
+| Stel de gebruikersnaam samen | `$sam = ($p.Voornaam.Substring(0,1) + ($p.Achternaam -replace '[^a-zA-Z]','') + "42").ToLower()` |
+| Controleer of de gebruiker al bestaat | `if (Get-ADUser -Filter "SamAccountName -eq '$sam'") { Write-Warning "$sam bestaat al"; continue }` |
+| Maak de gebruiker aan | `New-ADUser -Name $naam -SamAccountName $sam -UserPrincipalName "$sam@$Domein" -Path $OU -AccountPassword $ww -Enabled $true -ChangePasswordAtLogon $true -HomeDirectory "\\$Server\Homedirs$\$sam" -HomeDrive "H:" -ErrorAction Stop` |
+| Maak de home directory aan | `New-Item -Path "D:\Homedirs\$sam" -ItemType Directory -Force` |
+| Haal de gegevens op bij de API | `$antwoord = Invoke-RestMethod -Uri "$ApiUrl/api/medewerkers" -ErrorAction Stop` |
+| Stuur het rapport terug | `Invoke-RestMethod -Uri "$ApiUrl/api/rapport" -Method Post -Body ($body \| ConvertTo-Json -Depth 4) -ContentType "application/json"` |
+| Lees de statuscode uit | `$code = [int]$_.Exception.Response.StatusCode` |
+| Geef per statuscode een eigen melding | `switch ($code) { 400 {…} 401 {…} 404 {…} default {…} }` |
+| Is de API bereikbaar? | `if ($null -eq $_.Exception.Response) { Write-Warning "API niet bereikbaar"; exit 1 }` |
