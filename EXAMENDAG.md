@@ -16,6 +16,7 @@
 5. **Keuze met 3 opties?** Eerst `geldig?` (lus), dan `Optie 2?` → `Optie 9?`.
 6. **Checklist** onderaan [W1/README](W1-flowchart/README.md#checklist-voor-je-inlevert). Vooral: **geen doodlopende paden**.
 7. **Sjabloon invullen** (kopieer de opbouw van [het ingevulde sjabloon](W1-flowchart/ontwerp-sjabloon-ingevuld.md)): Doel + **eisen en wensen** · Aanpak · Stroomdiagram · Toelichting per stap · Input · Output · Resultaat uitvoer.
+8. **E-mail aan de opdrachtgever** met het ontwerp als bijlage: wat doet het script + **welke keuzes en waarom**, in gewone taal ([voorbeelden](W1-flowchart/email-voorbeelden.md))
 
 ## W2 · Script (90 min)
 1. Download → map `C:\Scripts` → hernoem naar `MonitorFreeMemory-Kyan.ps1` → open in VS Code. 📸
