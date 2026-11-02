@@ -33,6 +33,7 @@ Elke **stap** in de flowchart (W1) is een **stukje code** in het script (W2). He
 **W2**
 - [Het script van de docent, elke regel uitgelegd](W2-powershell/scripts/origineel/MonitorFreeMemory-docent-UITGELEGD.ps1)
 - [⭐ Opzoektabel: commentaar → code](W2-powershell/02-commentaar-naar-code.md)
+- [⭐ Voorbeeldenbank: alle puzzelstukjes (geheugen, CPU, schijf, processen, services, ping, netwerk, uptime)](W2-powershell/05-voorbeeldenbank.md) + [10 complete scripts](W2-powershell/scripts/compleet/)
 - [PowerShell vanaf nul](W2-powershell/01-powershell-vanaf-nul.md)
 - [Oefenscripts met gaten](W2-powershell/scripts/oefeningen/) en [antwoorden](W2-powershell/scripts/antwoorden/)
 - [Testen en documenteren](W2-powershell/03-testen-en-documenteren.md)
@@ -59,9 +60,11 @@ Elke **stap** in de flowchart (W1) is een **stukje code** in het script (W2). He
 │   ├── 02-commentaar-naar-code.md        ⭐ opzoektabel
 │   ├── 03-testen-en-documenteren.md      testplan + documentatie
 │   ├── 04-varianten-andere-metingen.md   CPU, schijf, processen, ping…
+│   ├── 05-voorbeeldenbank.md             ⭐ alle puzzelstukjes per stap + meetblokken
 │   ├── lesstof/                          lessen periode 9: samenvatting, scripts, oefen-API's, verdediging
 │   └── scripts/
 │       ├── origineel/                    script docent (+ uitgelegd) en jouw versie
+│       ├── compleet/                     10 complete monitorscripts (geheugen, CPU, schijf, …)
 │       ├── oefeningen/                   3 scripts met gaten
 │       └── antwoorden/                   uitwerkingen (getest)
 └── W3-sql/

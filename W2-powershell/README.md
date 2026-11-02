@@ -8,6 +8,7 @@
 | 1 | [scripts/origineel/MonitorFreeMemory-docent-UITGELEGD.ps1](scripts/origineel/MonitorFreeMemory-docent-UITGELEGD.ps1) | Het script van de docent, **elke regel uitgelegd** in gewone taal | 20 min |
 | 2 | [01-powershell-vanaf-nul.md](01-powershell-vanaf-nul.md) | Alle bouwstenen: variabelen, if, while, do-until, bestanden, datum… | naslag |
 | 3 | [02-commentaar-naar-code.md](02-commentaar-naar-code.md) | ⭐ **Opzoektabel: "commentaar zegt X → typ Y"** | examendag |
+| 3b | [05-voorbeeldenbank.md](05-voorbeeldenbank.md) | ⭐ **Voorbeeldenbank: per stap alle varianten + meetblokken voor geheugen, CPU, schijf, processen, services, ping, netwerk, uptime** + [10 complete scripts](scripts/compleet/) | examendag |
 | 4 | [scripts/oefeningen/](scripts/oefeningen/) | 3 oefenscripts met gaten. Antwoorden staan in [scripts/antwoorden/](scripts/antwoorden/) | 60 min |
 | 5 | [03-testen-en-documenteren.md](03-testen-en-documenteren.md) | Uitvoeren, testplan, documentatie (6 van de 15 punten!) | 15 min |
 | 6 | [04-varianten-andere-metingen.md](04-varianten-andere-metingen.md) | Als het examen CPU/schijf/… meet in plaats van geheugen | 10 min |

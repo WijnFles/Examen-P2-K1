@@ -20,7 +20,7 @@
 ## W2 · Script (90 min)
 1. Download → map `C:\Scripts` → hernoem naar `MonitorFreeMemory-Kyan.ps1` → open in VS Code. 📸
 2. Lees het script. **Kijk welke variabelenamen er al zijn** (`$seconds`, `$ResultFile`, …).
-3. Per gat: zoek het commentaar op in [02-commentaar-naar-code.md](W2-powershell/02-commentaar-naar-code.md) → typ de code → **gebruik de namen uit het script**.
+3. Per gat: zoek het commentaar op in [02-commentaar-naar-code.md](W2-powershell/02-commentaar-naar-code.md) of pak het puzzelstuk uit de [voorbeeldenbank](W2-powershell/05-voorbeeldenbank.md) (meet het script iets anders, zoals CPU of schijf? → [6b meetblokken](W2-powershell/05-voorbeeldenbank.md#6b--meetblokken-wat-meet-je)) → typ de code → **gebruik de namen uit het script**.
 4. **Kopieer de stijl:** staat er al een `While`-invoerlus? Doe de tweede net zo.
 5. **F5.** Rode tekst? Kijk naar het regelnummer. Meestal is het `}` `)` `"` of `-eq`.
 6. Lukt starten niet? → `Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass`
