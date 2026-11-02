@@ -30,6 +30,7 @@ Elke **stap** in de flowchart (W1) is een **stukje code** in het script (W2). He
 - [Van zin naar blok](W1-flowchart/README.md#van-zin-naar-blok-zo-vertaal-je-de-beschrijving)
 - [Sjabloon ontwerp volledig ingevuld](W1-flowchart/ontwerp-sjabloon-ingevuld.md)
 - [E-mail aan de opdrachtgever bij het ontwerp: 5 voorbeelden](W1-flowchart/email-voorbeelden.md)
+- [Instructie / gebruikershandleiding bij het script: 5 voorbeelden + sjabloon](W1-flowchart/instructie-voorbeelden.md)
 
 **W2**
 - [Het script van de docent, elke regel uitgelegd](W2-powershell/scripts/origineel/MonitorFreeMemory-docent-UITGELEGD.ps1)

@@ -119,3 +119,6 @@ Naam: Kyan Wossink        Datum: 2-11-2026        Versie: 1.1
 - [ ] Eventuele foutmelding + de oplossing
 
 Snelle screenshot: **Win + Shift + S**, dan plakken in Word met **Ctrl + V**.
+
+
+> 📄 **Gebruikersinstructie** bij je script (hoort bij goede documentatie): zie [W1-flowchart/instructie-voorbeelden.md](../W1-flowchart/instructie-voorbeelden.md).

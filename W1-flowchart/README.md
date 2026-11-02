@@ -7,6 +7,7 @@
 | **Deze pagina** | Elk Visio-blok uitgelegd, hoe je de tekst schrijft, en de complete flowchart van de oefentoets |
 | [ontwerp-sjabloon-ingevuld.md](ontwerp-sjabloon-ingevuld.md) | ⭐ Het **Sjabloon ontwerp volledig ingevuld** voor de Geheugenmonitor (zo goed als overschrijven) |
 | [email-voorbeelden.md](email-voorbeelden.md) | ⭐ **E-mail aan de opdrachtgever bij het ontwerp**: 5 voorbeelden + bouwstenen (criterium *Communicatie*) |
+| [instructie-voorbeelden.md](instructie-voorbeelden.md) | ⭐ **Instructie / gebruikershandleiding bij het script**: 5 voorbeelden + sjabloon |
 | [afbeeldingen/flowchart-docent.png](afbeeldingen/flowchart-docent.png) | De officiële uitwerking van de docent |
 | [flowchart-kyan-oefentoets.vsdx](flowchart-kyan-oefentoets.vsdx) | Jouw oefenversie (met verbeterpunten [onderaan](#jouw-oefenversie-wat-moet-beter)) |
 | [Sjabloon_ontwerp.docx](Sjabloon_ontwerp.docx) | Het lege sjabloon |
