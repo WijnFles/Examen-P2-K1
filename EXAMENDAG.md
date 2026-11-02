@@ -15,6 +15,7 @@
 4. **Ruiten = vragen met ?**, elke uitgang **Ja/Nee**.
 5. **Keuze met 3 opties?** Eerst `geldig?` (lus), dan `Optie 2?` → `Optie 9?`.
 6. **Checklist** onderaan [W1/README](W1-flowchart/README.md#checklist-voor-je-inlevert). Vooral: **geen doodlopende paden**.
+6b. **Behoefte beschrijven**: huidige situatie, probleem, behoefte, **eisen** (uit stap 1-9) en **wensen** ([voorbeelden](W1-flowchart/behoefte-voorbeelden.md))
 7. **Sjabloon invullen** (kopieer de opbouw van [het ingevulde sjabloon](W1-flowchart/ontwerp-sjabloon-ingevuld.md)): Doel + **eisen en wensen** · Aanpak · Stroomdiagram · Toelichting per stap · Input · Output · Resultaat uitvoer.
 8. **E-mail aan de opdrachtgever** met het ontwerp als bijlage: wat doet het script + **welke keuzes en waarom**, in gewone taal ([voorbeelden](W1-flowchart/email-voorbeelden.md))
 9. **Instructie** voor de gebruiker: stap voor stap hoe het script gestart en gebruikt wordt + "wat als het niet werkt" ([voorbeelden](W1-flowchart/instructie-voorbeelden.md))
