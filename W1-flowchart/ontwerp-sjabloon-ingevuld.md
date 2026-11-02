@@ -1,3 +1,65 @@
+Aanleiding
+Bedrijven willen steeds meer hun processen automatiseren om tijd te besparen. Deze besparing van tijd gebeurt vaak door scripting. Het bedrijf PurpleIT wil scripting inzetten om het eigen HR-proces te automatiseren.
+
+
+Wensen en eisen van het script
+De servicedesk krijgt iedere maand een lijst met nieuwe medewerkers van HR. Deze lijst moet automatisch worden ingelezen in de Active Directory. Dit moet op een gestandaardiseerde manier gebeuren. Omdat het om een geautomatiseerd proces gaat, is het belangrijk dat het script goed wordt getest. Fouten moeten worden afgevangen voordat ze worden verwerkt in het systeem. 
+Het script kent drie belangrijke fases met daarin elk de wensen en eisen:
+
+Initialisatiefase
+
+De initialisatiefase is een essentieel onderdeel van een script dat voorafgaand aan de uitvoeringfase controleert of alle vereiste versies, modules en bestanden aanwezig zijn. Het dient als een voorbereidende stap om ervoor te zorgen dat het script zonder problemen kan worden uitgevoerd en dat alle benodigde middelen beschikbaar zijn.
+
+Het is noodzakelijk om aan de beheerder te vragen of het script kan worden uitgevoerd met een input van “ja” of “nee”. Indien nee, dan wordt het script direct gestopt.
+
+PurpleIT gebruikt de meest recente versie van PowerShell. Om dit waar te maken, moet het script beginnen met een controle op PowerShell versie 7 of nieuwer voordat het verdergaat met de uitvoering.
+
+Het bronbestand met gebruikers wordt op een vooraf bepaalde locatie in een vaste directory geplaatst en dient te worden gecontroleerd op aanwezigheid door het script. Op deze manier kan het script ervoor zorgen dat het bronbestand beschikbaar is voordat het script verder gaat met de uitvoering. 
+
+Het script is afhankelijk van de Active Directory PowerShell Module en kan niet worden uitgevoerd zonder deze module. Daarom is het belangrijk om te controleren of de module aanwezig is, voordat het script verder kan gaan met de uitvoering. 
+
+Alle foutmeldingen in de initalisatiefase moet het script direct stoppen. De beheerder die het script uitvoert, moet passende meldingen te zien krijgen als er foutmeldingen zijn gevonden.
+
+Uitvoeringsfase
+
+In deze fase worden de acties uitgevoerd en worden gebruikers ingelezen in Active Directory. 
+
+Het script leest gebruikers aan de hand van een .csv-bestand uit waarin de benodigde gegevens worden verzameld, zoals gebruikersnamen, wachtwoorden en e-mailadressen. Gebruikersnaam is altijd firstname+lastname zonder spatie.
+
+Bestaande gebruikers mogen niet in de Active Directory worden ingelezen. Indien een bestaande gebruiker is gevonden, moet er een passende melding naar het logboek worden geschreven en een melding aan de beheerder.
+
+In Active Directory zijn alle department’s in het csv-bestand aanwezig als Organizational Unit (OU). Als een bepaalde afdeling ontbreekt, genereert een script een foutmelding zowel naar de beheerder als in het logboek.
+
+Elke nieuwe aangemaakte gebruiker krijgt in een standaard wachtwoord mee. Deze nieuwe ingelezen gebruikers in Active Directory moeten na de eerste keer inloggen, direct hun wachtwoord wijzigen.
+
+Het moet voor de beheerder eenvoudig zijn om alle foutmeldingen terug te lezen uit het logboek. Alle meldingen zijn duidelijk omschreven voor de beheerder.
+
+Afrondingsfase
+
+Het script geeft een gepaste melding aan de beheerder en registreert deze tevens in het logboek. Op deze manier wordt de beheerder geïnformeerd dat het script is afgerond.
+
+Randvoorwaarden
+Het script moet uitgebreid worden getest op mogelijke fouten die door verschillende scenario’s kunnen optreden.
+Het script moet in PowerShell 7 of nieuwer worden uitgevoerd.
+De interactie met de beheerder gaat via PowerShell.
+Visual Studio Code moet aanwezig zijn op de server (VM1).
+Voor het testen maak je gebruik van de server (VM1).
+
+Doel
+Eisen en wensenvan de opdrachtgever
+Plan van aanpak
+<Beschrijf het Plan van Aanpak van deze opdracht.
+Denk daarbij aan de volgende zaken:
+-	Achtergrond
+-	Aanleiding
+-	Tussenresultaten
+-	Eindresultaat
+-	Borgen van de kwaliteit
+-	etc.> 
+
+
+Maak een ontwerp
+
 # Sjabloon ontwerp: volledig ingevuld (Geheugenmonitor)
 
 Dit is het **Sjabloon ontwerp** (Solar Plex Network) ingevuld voor de oefentoets. Op het examen neem je dezelfde opbouw over en pas je de namen en stappen aan.
