@@ -1,64 +1,42 @@
-Aanleiding
-Bedrijven willen steeds meer hun processen automatiseren om tijd te besparen. Deze besparing van tijd gebeurt vaak door scripting. Het bedrijf PurpleIT wil scripting inzetten om het eigen HR-proces te automatiseren.
-
-
+Bedrijven willen steeds meer hun processen automatiseren om tijd te besparen. Deze besparing van tijd gebeurt vaak door scripting. Het bedrijf PurpleIT wil scripting inzetten om een eigen HR-proces te automatiseren.
 Wensen en eisen van het script
-De servicedesk krijgt iedere maand een lijst met nieuwe medewerkers van HR. Deze lijst moet automatisch worden ingelezen in de Active Directory. Dit moet op een gestandaardiseerde manier gebeuren. Omdat het om een geautomatiseerd proces gaat, is het belangrijk dat het script goed wordt getest. Fouten moeten worden afgevangen voordat ze worden verwerkt in het systeem. 
-Het script kent drie belangrijke fases met daarin elk de wensen en eisen:
-
-Initialisatiefase
-
-De initialisatiefase is een essentieel onderdeel van een script dat voorafgaand aan de uitvoeringfase controleert of alle vereiste versies, modules en bestanden aanwezig zijn. Het dient als een voorbereidende stap om ervoor te zorgen dat het script zonder problemen kan worden uitgevoerd en dat alle benodigde middelen beschikbaar zijn.
-
-Het is noodzakelijk om aan de beheerder te vragen of het script kan worden uitgevoerd met een input van “ja” of “nee”. Indien nee, dan wordt het script direct gestopt.
-
-PurpleIT gebruikt de meest recente versie van PowerShell. Om dit waar te maken, moet het script beginnen met een controle op PowerShell versie 7 of nieuwer voordat het verdergaat met de uitvoering.
-
-Het bronbestand met gebruikers wordt op een vooraf bepaalde locatie in een vaste directory geplaatst en dient te worden gecontroleerd op aanwezigheid door het script. Op deze manier kan het script ervoor zorgen dat het bronbestand beschikbaar is voordat het script verder gaat met de uitvoering. 
-
-Het script is afhankelijk van de Active Directory PowerShell Module en kan niet worden uitgevoerd zonder deze module. Daarom is het belangrijk om te controleren of de module aanwezig is, voordat het script verder kan gaan met de uitvoering. 
-
-Alle foutmeldingen in de initalisatiefase moet het script direct stoppen. De beheerder die het script uitvoert, moet passende meldingen te zien krijgen als er foutmeldingen zijn gevonden.
-
-Uitvoeringsfase
-
-In deze fase worden de acties uitgevoerd en worden gebruikers ingelezen in Active Directory. 
-
-Het script leest gebruikers aan de hand van een .csv-bestand uit waarin de benodigde gegevens worden verzameld, zoals gebruikersnamen, wachtwoorden en e-mailadressen. Gebruikersnaam is altijd firstname+lastname zonder spatie.
-
-Bestaande gebruikers mogen niet in de Active Directory worden ingelezen. Indien een bestaande gebruiker is gevonden, moet er een passende melding naar het logboek worden geschreven en een melding aan de beheerder.
-
-In Active Directory zijn alle department’s in het csv-bestand aanwezig als Organizational Unit (OU). Als een bepaalde afdeling ontbreekt, genereert een script een foutmelding zowel naar de beheerder als in het logboek.
-
-Elke nieuwe aangemaakte gebruiker krijgt in een standaard wachtwoord mee. Deze nieuwe ingelezen gebruikers in Active Directory moeten na de eerste keer inloggen, direct hun wachtwoord wijzigen.
-
-Het moet voor de beheerder eenvoudig zijn om alle foutmeldingen terug te lezen uit het logboek. Alle meldingen zijn duidelijk omschreven voor de beheerder.
-
-Afrondingsfase
-
-Het script geeft een gepaste melding aan de beheerder en registreert deze tevens in het logboek. Op deze manier wordt de beheerder geïnformeerd dat het script is afgerond.
-
-Randvoorwaarden
-Het script moet uitgebreid worden getest op mogelijke fouten die door verschillende scenario’s kunnen optreden.
-Het script moet in PowerShell 7 of nieuwer worden uitgevoerd.
-De interactie met de beheerder gaat via PowerShell.
-Visual Studio Code moet aanwezig zijn op de server (VM1).
-Voor het testen maak je gebruik van de server (VM1).
-
+• Besturingsversie: Het script moet verplicht worden uitgevoerd in PowerShell versie 7 of nieuwer.
+• Interactie: De interactie verloopt via PowerShell. Er moet expliciet om toestemming worden gevraagd aan de beheerder ("ja"/"nee") voordat de verwerking start. Bij "nee" stopt het script direct.
+• Validatie: Het script moet vooraf de aanwezigheid van de Active Directory PowerShell-module en het CSV-bronbestand controleren. Fouten in deze fase stoppen het script direct.
+• Naamgeving: Gebruikersnamen worden gestandaardiseerd aangemaakt op basis van firstname+lastname (zonder spaties).
+• Duplicatenbeheer: Reeds bestaande gebruikers mogen niet opnieuw worden ingelezen. Dit moet worden gemeld aan de beheerder en in het logboek.
+• Structuurcontrole: De afdeling (department) in het CSV-bestand moet bestaan als Organizational Unit (OU) binnen Active Directory. Ontbreekt deze, dan volgt een foutmelding aan de beheerder en in het logboek.
+• Wachtwoordbeleid: Nieuwe gebruikers krijgen een standaardwachtwoord en worden verplicht dit bij de eerste keer inloggen direct te wijzigen.
+• Logging: Alle meldingen en fouten moeten duidelijk omschreven en eenvoudig terug te lezen zijn in een centraal logboek.
+• Afronding: Het script sluit af met een duidelijke statusmelding aan de beheerder en registreert de afronding in het logboek.
 Doel
-Eisen en wensenvan de opdrachtgever
+Het ontwerpen, ontwikkelen en succesvol testen van een robuust, gestandaardiseerd PowerShell 7+ script dat maandelijks de instroom van nieuwe medewerkers automatiseert binnen de Active Directory van PurpleIT, met minimale beheerderslast en maximale fouttolerantie.
+Eisen en wensen van de opdrachtgever
+• Betrouwbaarheid: Fouten moeten proactief worden afgevangen (bijv. ontbrekende OU's of dubbele accounts) voordat er wijzigingen in het productiesysteem worden doorgevoerd.
+• Transparantie: De beheerder moet via een overzichtelijk logboek achteraf direct kunnen herleiden welke accounts succesvol zijn aangemaakt en waar eventuele fouten zijn opgetreden.
+• Gebruikersgemak: Geen ingewikkelde configuraties; het script draait op basis van een vooraf bepaald CSV-bestand op een vaste directory-locatie.
+• Veiligheid: Geforceerde wachtwoordwijziging bij de eerste aanmelding om te voldoen aan interne security-richtlijnen.
 Plan van aanpak
-<Beschrijf het Plan van Aanpak van deze opdracht.
-Denk daarbij aan de volgende zaken:
--	Achtergrond
--	Aanleiding
--	Tussenresultaten
--	Eindresultaat
--	Borgen van de kwaliteit
--	etc.> 
-
-
-Maak een ontwerp
+• Achtergrond
+PurpleIT is een IT-organisatie die streeft naar een hoge mate van operational excellence. Het handmatig beheren van gebruikersaccounts past niet binnen deze visie. De servicedesk voert momenteel maandelijks mutaties handmatig uit, wat kostbare tijd van engineers opslokt.
+• Aanleiding
+De HR-afdeling levert maandelijks een gestructureerde lijst aan met nieuwe medewerkers. Omdat deze data al digitaal beschikbaar is, vormt dit de perfecte basis om een automatiseringsslag te slaan middels scripting. Dit voorkomt typefouten, versnelt de onboarding en zorgt voor een identieke inrichting van elk account.
+• Tussenresultaten
+	1. Inrichten Testomgeving (VM1): Installatie en configuratie van Visual Studio Code op de testserver (VM1) en het klaarzetten van een representatieve Active Directory-teststructuur (inclusief test-OU's).
+	2. Oplevering Initialisatiefase: Een werkend scriptdeel dat de runtime (PowerShell 7+), beheerderstoestemming, module-aanwezigheid en bestandspaden valideert.
+	3. Oplevering Uitvoerings- & Afrondingsfase: Integratie van de CSV-importlogica, de transformatie van naamgeving (firstname+lastname), de duplicatencheck, OU-validatie en het mechanisme voor de wachtwoordwijziging.
+	4. Concept Logboek: Realisatie van de logging-engine die fouten en successen gestructureerd wegschrijft naar een .log-bestand.
+• Eindresultaat
+Een single-file PowerShell script (Import-PurpleITHR.ps1) dat volledig voldoet aan alle gestelde functionele eisen, inclusief een gedocumenteerd testrapport waarin is aangetoond dat het script correct reageert op zowel geldige als ongeldige invoerscenario's op VM1. Daarnaast is er een persistent logbestand dat eenvoudig uitgelezen kan worden.
+• Borgen van de kwaliteit
+	• Strikte Runtime Validatie: Door direct bij de start te controleren op PowerShell versie 7, wordt voorkomen dat het script faalt op legacy-systemen (zoals Windows PowerShell 5.1) die bepaalde syntax of modules niet ondersteunen.
+	• Try-Catch Foutafhandeling: Kritieke acties (zoals de New-ADUser aanroep of het controleren van de OU) worden ingepakt in Try-Catch blokken om onverwachte script-crashes te voorkomen.
+	• Scenario-gebaseerd Testen: Op VM1 worden specifieke testcases gedraaid:
+		• Scenario A: Een medewerker met een afdeling die niet bestaat als OU (moet een fout loggen en doorgaan).
+		• Scenario B: Een medewerker die al bestaat in de AD (moet een waarschuwing loggen en overslaan).
+		• Scenario C: Een medewerker met spaties in de naam (moet correct worden geconverteerd en aangemaakt).
+	• Code Review via VS Code: Het script wordt opgebouwd met duidelijke commentaarregels en regio's, zodat eventuele toekomstige aanpassingen door andere beheerders eenvoudig kunnen worden uitgevoerd.
+Wil je dat ik op basis van dit definitieve ontwerp nu de volledige PowerShell code (inclusief alle drie de fasen en de Try-Catch logica voor het logboek) voor je uitschrijf, zodat je deze direct kunt testen in Visual Studio Code op VM1?
 
 # Sjabloon ontwerp: volledig ingevuld (Geheugenmonitor)
 
